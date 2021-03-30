@@ -19,7 +19,7 @@ class User(Resource):
         return {'message': 'No user found'}, 404  # Not found
 
 
-    @jwt_required
+    @jwt_required()
     def delete(self, user_id):
         user = UserModel.find_user(user_id)
         if user:
@@ -63,7 +63,7 @@ class UserLogin(Resource):
 
 class UserLogout(Resource):
 
-    @jwt_required
+    @jwt_required()
     def post(self):
         jwt_id = get_raw_jwt()['jti']  # jti == JWT Token Identifier
         BLACKLIST.add(jwt_id) # adiciona o ID a blacklist
