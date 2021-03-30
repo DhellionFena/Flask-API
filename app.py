@@ -18,8 +18,8 @@ jwt = JWTManager(app)
 def cria_banco():
     banco.create_all()
 
-@jwt.token_in_blacklist_loader
-def verifica_blacklist(token):
+@jwt.token_in_blocklist_loader
+def verifica_blocklist(token):
     return token['jti'] in BLACKLIST
 
 @jwt.revoked_token_loader
